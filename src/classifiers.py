@@ -24,7 +24,7 @@ import tensorflow as tf
 #import pydot
 import numpy as np
 
-
+#This function returns the accuracy and the predicted values
 def evaluate_classifier(model, x_test, y_test):
     scores = model.evaluate(x=x_test, y=y_test, batch_size=5)
     acc = scores[1]*100
@@ -32,7 +32,7 @@ def evaluate_classifier(model, x_test, y_test):
     #print("y_test", y_test)    
     return acc, y_predict
 
-
+#This function create and train the neural networks
 def train_classifier1(x_train, x_test, y_train, y_test, previous_weight=False):#bag of words
     #example https://cloud.google.com/blog/big-data/2017/10/intro-to-text-classification-with-keras-automatically-tagging-stack-overflow-posts
     print("classifier 1")
@@ -60,7 +60,8 @@ def train_classifier1(x_train, x_test, y_train, y_test, previous_weight=False):#
 
     return model, history, acc_train, acc_test
 
-#base on Keras examples [https://github.com/keras-team/keras/tree/master/examples]
+#This function creates and trains a convulutional neural networks
+#Base on Keras examples [https://github.com/keras-team/keras/tree/master/examples]
 def train_classifier2(embedding_matrix, x_train, x_test, y_train, y_test, previous_weight=False): #embedding
     # set parameters:
     maxlen = 50
