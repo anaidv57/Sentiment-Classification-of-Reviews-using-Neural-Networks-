@@ -57,7 +57,7 @@ incorrect_words = []
 count_words = 0
 dfbag = pd.DataFrame() 
 
-#save files of performance
+#Save a file as a Excel document
 def save_file(df, namef):
     # Create a Pandas Excel writer using XlsxWriter as the engine.
     writer = pd.ExcelWriter(namef, engine='xlsxwriter')    
@@ -173,6 +173,7 @@ def bag_of_words(X):
 #    print(bowReview)
     return bowReview
 
+#Create the embeddings matrix
 def embeddings_matrix_glove(X, y):
 #base on http://www.orbifold.net/default/2017/01/10/embedding-and-tokenizer-in-keras/ 
 #https://www.oreilly.com/learning/perform-sentiment-analysis-with-lstms-using-tensorflow
@@ -263,7 +264,7 @@ def load_embedding_matrix_x(dataset):
     x = np.load(x_name)   
     return embedding_matrix, x
     
-#Save BOWs
+#Save BOWs - Bag Of Words
 def save_bow(bowReview,dataset):
     bow_name = 'bow_' + dataset +'.npy'
     np.save(bow_name, bowReview)
@@ -279,6 +280,7 @@ def frequency_analysis(tokens):
         print(str(key) + ":" + str(val))
     freq.plot(25, cumulative=False)
 
+#Split the data in training and testing set
 def get_train_test(textReviews,X, y, test_size): 
     global count_spelling, count_words
     print("X", X.shape)
